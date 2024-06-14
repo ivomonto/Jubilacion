@@ -20,6 +20,19 @@ h1{
     font-size: 5rem;
     color: #BFBFBF;
 }
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+img{
+    width: 15rem;
+    height: 20rem;
+}
 @media (max-width: 768px){
     #timer {
         font-size: 2em; /* Reducir el tamaño de la fuente para dispositivos móviles */
