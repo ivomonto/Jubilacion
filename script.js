@@ -1,6 +1,6 @@
 // Definir la fecha de inicio y finalización de la cuenta regresiva
-const startDate = new Date("2024-06-14T00:00:00").getTime();
-const endDate = new Date("2024-08-12T00:00:00").getTime();
+const startDate = new Date("2024-03-16T21:00:00").getTime();
+const endDate = new Date("2024-11-11T00:00:00").getTime();
 
 // Actualizar el contador cada segundo
 const countdown = setInterval(function() {
