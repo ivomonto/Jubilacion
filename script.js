@@ -1,28 +1,34 @@
-// Definir la fecha de inicio y finalización de la cuenta regresiva
-const startDate = new Date("2024-03-16T21:00:00").getTime();
-const endDate = new Date("2024-11-11T00:00:00").getTime();
+// Set the date we're counting down to (1 de febrero de 2036)
+var countDownDate = new Date(2036, 1, 1, 0, 0, 0).getTime();
 
-// Actualizar el contador cada segundo
-const countdown = setInterval(function() {
+// Update the count down every 1 second
+var x = setInterval(function() {
 
-    // Obtener la fecha y hora actual
-    const now = new Date().getTime();
+  // Get today's date and time
+  var now = new Date().getTime();
 
-    // Calcular la diferencia entre la fecha final y la fecha actual
-    const difference = endDate - now;
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
 
-    // Calcular días, horas, minutos y segundos restantes
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+  // Time calculations for years, days, hours, minutes and seconds
+  var years = Math.floor(distance / (1000 * 60 * 60 * 24 * 365));
+  var totalDays = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var days = totalDays - (years * 365); // Restar los días de los años completos
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Mostrar el tiempo restante en el elemento con id "timer"
-    document.getElementById("timer").innerHTML = `Días: ${days.toString().padStart(2, '0')} Horas: ${hours.toString().padStart(2, '0')} Minutos: ${minutes.toString().padStart(2, '0')} Segundos: ${seconds.toString().padStart(2, '0')}`;
+  // Output the result in elements with the appropriate IDs
+  document.getElementById("years").innerText = years;
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = hours;
+  document.getElementById("minutes").innerText = minutes;
+  document.getElementById("seconds").innerText = seconds;
 
-    // Si la fecha actual supera la fecha final, detener la cuenta regresiva
-    if (now > endDate) {
-        clearInterval(countdown);
-        document.getElementById("timer").innerHTML = "¡Tiempo Expirado!";
-    }
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("headline").innerText = "¡Cuenta regresiva terminada!";
+    document.getElementById("timer").style.display = "none";
+  }
 }, 1000);
